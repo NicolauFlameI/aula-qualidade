@@ -15,7 +15,7 @@ jobs:
         - name: Setup node
           uses: actions/setup-node@v3
           with:
-            node-version:'22.17.0'
+             node-version: '22.17.0'
         - name: install package
           run: npm install 
         - name: Start server
