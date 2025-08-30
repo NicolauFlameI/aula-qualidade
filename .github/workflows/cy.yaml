@@ -1,0 +1,29 @@
+name: integracao
+run-name: Integração Continua
+
+on: 
+  push:
+    branches:
+      -main
+
+jobs: 
+    validacao:
+      runs-on: unbuntu-latest
+      steps:
+        - name: Obter o codigo
+          uses: actions/checkout@v3
+        - name: Setup node
+          uses: actions/setup-node@v3
+          with:
+            node-version:'22.17.0'
+        - name: install package
+          run: npm install 
+        - name: Start server
+          run: nmp start & 
+          env: 
+            CI: true
+        - name: Run Cypress
+          run: npx cypress run
+          env:
+            CI: true
+        
